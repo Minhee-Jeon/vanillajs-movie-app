@@ -61,15 +61,19 @@ export class Store {
     for (const key in state) {
       Object.defineProperty(this.state, key, {
         get: () => state[key], // state['message']
-        set: (val) => {
+        set: val => {
           state[key] = val // 상태 변경
-          console.log(val)
-          this.observers[key]()
+          // this.observers['message']
+          this.observers[key].forEach(observer => observer(val))
         }
       })
     }
   }
   subscribe(key, callback) {
-    this.observers[key] = callback
+    // this.observers['message'] = () => {}
+    // ==> {message: [ callback1, callback2, callback3]} 고도화
+    Array.isArray(this.observers[key])
+      ? this.observers[key].push(callback)
+      : this.observers[key] = [callback]
   }
 }
