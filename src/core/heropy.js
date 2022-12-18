@@ -52,3 +52,24 @@ export function createRouter(routes) {
     routeRender(routes)
   }
 }
+
+///// STORE /////
+export class Store {
+  constructor(state) {
+    this.state = {}
+    this.observers = {}
+    for (const key in state) {
+      Object.defineProperty(this.state, key, {
+        get: () => state[key], // state['message']
+        set: (val) => {
+          state[key] = val // 상태 변경
+          console.log(val)
+          this.observers[key]()
+        }
+      })
+    }
+  }
+  subscribe(key, callback) {
+    this.observers[key] = callback
+  }
+}
