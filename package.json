@@ -1,0 +1,24 @@
+{
+  "name": "vanillajs-movie-app",
+  "version": "1.0.0",
+  "description": "[패스트캠퍼스]",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel ./index.html",
+    "build": "parcel build ./index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Minhee-Jeon/vanillajs-movie-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Minhee-Jeon/vanillajs-movie-app/issues"
+  },
+  "homepage": "https://github.com/Minhee-Jeon/vanillajs-movie-app#readme",
+  "devDependencies": {
+    "parcel": "^2.8.2"
+  }
+}
