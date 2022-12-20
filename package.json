@@ -19,6 +19,27 @@
   },
   "homepage": "https://github.com/Minhee-Jeon/vanillajs-movie-app#readme",
   "devDependencies": {
-    "parcel": "^2.8.2"
+    "parcel": "^2.8.2",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb": "18.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jsx-a11y": "^6.3.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "4.0.0",
+    "prettier": "^2.8.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "airbnb",
+      "plugin:prettier/recommended"
+    ],
+    "rules": {
+      "object-curly-newline": 0
+    },
+    "env": {
+      "browser": true
+    }
   }
 }
