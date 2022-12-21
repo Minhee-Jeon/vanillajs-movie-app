@@ -86,6 +86,5 @@ export class Store {
     //   movies: [callback, callback, callback],
     //   message: [callback]
     // }
-    }
   }
 }
