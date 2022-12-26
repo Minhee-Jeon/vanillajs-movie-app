@@ -1,8 +1,8 @@
 ///// Component /////
 export class Component {
   constructor(payload = {}) {
-    const { 
-      tagName = 'div', // 최상의 요소의 태그 이름
+    const {
+      tagName = 'div', // 최상위 요소의 태그 이름
       props = {},
       state = {}
     } = payload
@@ -68,7 +68,7 @@ export class Store {
         set: val => {
           state[key] = val
           if (Array.isArray(this.observers[key])) { // 호출할 콜백이 있는 경우
-            this.observers[key].forEach(observer => observers(val))
+            this.observers[key].forEach(observer => observer(val))
           }
         }
       })
@@ -77,14 +77,14 @@ export class Store {
   // 상태 변경 구독
   subscribe(key, callback) {
     Array.isArray(this.observers[key]) // 이미 등록된 콜백이 있는지 확인
-    ? this.observers[key].push(callback) // 있으면 새로운 콜백 밀어넣기
-    : this.observers[key] = callback // 없으면 콜백 배열로 할당
+      ? this.observers[key].push(callback) // 있으면 새로운 콜백 밀어넣기
+      : this.observers[key] = [callback] // 없으면 콜백 배열로 할당
 
     // 예시)
     // observers = {
     //   구독할 상태 이름: [실행할 콜백1, 실행할 콜백2, ...]
-    //   movies: [callback, callback, callback],
-    //   message: [callback]
+    //   movies: [cb, cb, cb],
+    //   message: [cb]
     // }
   }
 }
