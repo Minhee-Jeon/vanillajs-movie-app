@@ -8,11 +8,15 @@ export default class MovieList extends Component {
     movieStore.subscribe('movies', () => { // 구독받아야 상태 변화에 따라 렌더링이 적용됨
       this.render()
     })
+    movieStore.subscribe('loading', () => {
+      this.render()
+    })
   }
   render() {
     this.el.classList.add('movie-list')
     this.el.innerHTML = /* html */`
       <div class="movies"></div>
+      <div class="the-loader hide"></div>
     `
 
     const moviesEl = this.el.querySelector('.movies')
@@ -21,5 +25,10 @@ export default class MovieList extends Component {
         movie
       }).el)
     )
+
+    const loaderEl = this.el.querySelector('.the-loader')
+    movieStore.state.loading 
+      ? loaderEl.classList.remove('hide')
+      : loaderEl.classList.add('hide')
   }
 }

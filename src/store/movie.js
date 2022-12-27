@@ -4,11 +4,13 @@ const store = new Store({
   searchText: '',
   page: 1,
   pageMax: 1,
-  movies: []
+  movies: [],
+  loading: false
 })
 
 export default store
 export const searchMovies = async page => {
+  store.state.loading = true
   store.state.page = page
   if (page === 1) { // 새 내용 검색 시 페이지 초기화 
     store.state.movies = []
@@ -21,4 +23,5 @@ export const searchMovies = async page => {
     ...Search
   ]
   store.state.pageMax = Math.ceil(Number(totalResults) / 10)
+  store.state.loading = false
 }
