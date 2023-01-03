@@ -2,3 +2,7 @@ node_modules/
 *.mdb
 *.log
 dist/*
+.parcel-cache
+.vscode
+.DS_Store
+.vercel
